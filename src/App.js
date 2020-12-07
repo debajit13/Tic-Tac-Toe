@@ -3,6 +3,7 @@ import Icon from "./components/Icon";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Darkmode from "darkmode-js";
 
 import { Card, CardBody, Container, Button, Col, Row } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.css";
@@ -21,6 +22,10 @@ const App = () => {
     itemArray.fill("empty", 0, 9);
   };
 
+  const options = {
+    label: "🌓",
+  };
+  const darkmode = new Darkmode(options);
   const checkIsWinner = () => {
     if (
       itemArray[0] === itemArray[1] &&
@@ -102,7 +107,7 @@ const App = () => {
               </Button>
             </div>
           ) : (
-            <h1 className="text-center text-warning">
+            <h1 className="text-center text-primary heading">
               {isCross ? "Cross" : "Circle"} turns
             </h1>
           )}
@@ -117,6 +122,7 @@ const App = () => {
           </div>
         </Col>
       </Row>
+      {darkmode.showWidget()}
     </Container>
   );
 };
